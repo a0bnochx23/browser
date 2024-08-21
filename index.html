@@ -12,17 +12,8 @@
                 const response = await fetch('https://example.com/page.html');
                 const html = await response.text();
                 
-                // Fetch CSS
-                const cssResponse = await fetch('https://example.com/styles.css');
-                const css = await cssResponse.text();
-
                 // Inject HTML
                 document.getElementById('content').innerHTML = html;
-                
-                // Inject CSS
-                const style = document.createElement('style');
-                style.textContent = css;
-                document.head.appendChild(style);
 
             } catch (error) {
                 console.error('Error fetching content:', error);
