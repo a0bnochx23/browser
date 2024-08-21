@@ -1,0 +1,15 @@
+{
+    "name": "Simple Browser PWA",
+    "short_name": "Browser",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "description": "A simple browser PWA with search functionality",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
