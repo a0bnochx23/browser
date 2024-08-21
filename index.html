@@ -1,22 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Browser PWA</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Custom Browser</title>
 </head>
 <body>
-    <div class="browser">
-        <div class="navbar">
-            <button id="backButton">Back</button>
-            <button id="forwardButton">Forward</button>
-            <button id="refreshButton">Refresh</button>
-            <input type="text" id="addressBar" placeholder="Search or enter a web address">
-            <button id="goButton">Go</button>
-        </div>
-        <iframe id="webview"></iframe>
-    </div>
-    <script src="app.js"></script>
+    <div id="content"></div>
+    <script>
+        async function loadContent() {
+            try {
+                // Fetch HTML
+                const response = await fetch('https://example.com/page.html');
+                const html = await response.text();
+                
+                // Fetch CSS
+                const cssResponse = await fetch('https://example.com/styles.css');
+                const css = await cssResponse.text();
+
+                // Inject HTML
+                document.getElementById('content').innerHTML = html;
+                
+                // Inject CSS
+                const style = document.createElement('style');
+                style.textContent = css;
+                document.head.appendChild(style);
+
+            } catch (error) {
+                console.error('Error fetching content:', error);
+            }
+        }
+
+        loadContent();
+    </script>
 </body>
 </html>
